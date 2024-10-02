@@ -18,7 +18,7 @@ from .scalar_functions import (
     Neg,
     ReLU,
     ScalarFunction,
-    Sigmoid,  
+    Sigmoid,
 )
 
 ScalarLike = Union[float, int, "Scalar"]
@@ -173,7 +173,7 @@ class Scalar:
 
     def __gt__(self, b: ScalarLike) -> Scalar:
         return Lt.apply(b, self)
-    
+
     def __eq__(self, b: ScalarLike) -> Scalar:
         return Eq.apply(b, self)
 
@@ -186,7 +186,7 @@ class Scalar:
     def log(self) -> Scalar:
         """Apply the natural logarithm to the scalar."""
         return Log.apply(self)
-    
+
     def exp(self) -> Scalar:
         """Apply the exponential function to the scalar."""
         return Exp.apply(self)

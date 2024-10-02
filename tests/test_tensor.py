@@ -28,7 +28,9 @@ def test_one_args(
 ) -> None:
     """Test one-arg functions compared to floats"""
     name, base_fn, tensor_fn = fn
+    print(f"t1: {t1}")
     t2 = tensor_fn(t1)
+    print(f"t2: {t2}")
     for ind in t2._tensor.indices():
         assert_close(t2[ind], base_fn(t1[ind]))
 
@@ -207,6 +209,7 @@ def test_reduce_forward_one_dim_2() -> None:
 
     # here 1 means reduce the 1st dim, 2 -> nothing
     t_summed_2 = t.sum(1)
+    print(t_summed_2)
 
     # shape (3)
     t_sum_2_expected = tensor([[5], [10], [12]])
@@ -220,6 +223,7 @@ def test_reduce_forward_all_dims() -> None:
 
     # reduce all dims, (3 -> 1, 2 -> 1)
     t_summed_all = t.sum()
+    print(t_summed_all.shape)
 
     # shape (1, 1)
     t_summed_all_expected = tensor([27])
