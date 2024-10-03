@@ -168,7 +168,7 @@ class TensorData:
 
         if strides is None:
             strides = strides_from_shape(shape)
-        
+
         assert isinstance(strides, tuple), "Strides must be tuple"
         assert isinstance(shape, tuple), "Shape must be tuple"
         if len(strides) != len(shape):
