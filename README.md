@@ -77,7 +77,7 @@ Epoch: 460/500, loss: 4.878082312366759, correct: 50\
 Epoch: 470/500, loss: 4.715875687725097, correct: 50\
 Epoch: 480/500, loss: 4.562879752884203, correct: 50\
 Epoch: 490/500, loss: 4.418378072326041, correct: 50\
-Epoch: 500/500, loss: 4.28173139512602, correct: 50\
+Epoch: 500/500, loss: 4.28173139512602, correct: 50
 
 ## Diag Dataset (Hidden Layer 7, LR of 0.1)
 
@@ -158,7 +158,7 @@ Epoch: 660/700, loss: 2.309098666332852, correct: 50\
 Epoch: 670/700, loss: 2.2582823640606207, correct: 50\
 Epoch: 680/700, loss: 2.210444034081056, correct: 50\
 Epoch: 690/700, loss: 2.1650931250476275, correct: 50\
-Epoch: 700/700, loss: 2.1185960190184208, correct: 50\
+Epoch: 700/700, loss: 2.1185960190184208, correct: 50
 
 ## Split Dataset (Hidden Layer 12, LR of 0.1)
 
@@ -269,7 +269,7 @@ Epoch: 960/1000, loss: 2.674071486877392, correct: 50\
 Epoch: 970/1000, loss: 2.6313175005278824, correct: 50\
 Epoch: 980/1000, loss: 2.5905372262523945, correct: 50\
 Epoch: 990/1000, loss: 2.5507514185393956, correct: 50\
-Epoch: 1000/1000, loss: 2.5107908199495528, correct: 50\
+Epoch: 1000/1000, loss: 2.5107908199495528, correct: 50
 
 ## Xor Dataset (Hidden Layer 16, LR of 0.1)
 
