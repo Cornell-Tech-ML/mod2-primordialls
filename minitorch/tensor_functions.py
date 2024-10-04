@@ -232,7 +232,7 @@ class Permute(Function):
     @staticmethod
     def forward(ctx: Context, a: Tensor, order: Tensor) -> Tensor:
         """Permute the dimensions of the tensor."""
-        ctx.save_for_backward(a.shape)
+        ctx.save_for_backward(order)
         order2 = [int(order[i]) for i in range(order.size)]
         return minitorch.Tensor(a._tensor.permute(*order2), backend=a.backend)
 
@@ -240,12 +240,8 @@ class Permute(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
         """Permute backward"""
         (original,) = ctx.saved_values
-        return (
-            minitorch.Tensor.make(
-                grad_output._tensor._storage, original, backend=grad_output.backend
-            ),
-            0.0,
-        )
+        invertorder = [i for i,_ in sorted(list(enumerate([int(original[j]) for j in range(original.size)])),key=lambda x: x[1])]
+        return grad_output.permute(*invertorder), 0.0
 
 
 class View(Function):

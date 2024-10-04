@@ -27,11 +27,11 @@ class Network(minitorch.Module):
 class Linear(minitorch.Module):
     def __init__(self, in_size, out_size):
         super().__init__()
-        self.weights = self.add_parameter("weights", RParam(out_size, 1, in_size).value)
+        self.weights = self.add_parameter("weights", RParam(in_size, 1, out_size).value)
         self.bias = self.add_parameter("bias", RParam(out_size).value)
 
     def forward(self, inputs):
-        return (self.weights.value * inputs).sum(2).view(self.weights.value.shape[0],inputs.shape[0]).permute(1,0) + self.bias.value
+        return (self.weights.value * inputs.view(1, inputs.shape[0], inputs.shape[1]).permute(2,1,0)).sum(0).view(inputs.shape[0],self.weights.value.shape[2]) + self.bias.value
 
 
 def default_log_fn(epoch, total_loss, correct, losses):
@@ -88,4 +88,7 @@ if __name__ == "__main__":
     HIDDEN = 3
     RATE = 0.5
     data = minitorch.datasets["Simple"](PTS)
-    TensorTrain(HIDDEN).train(data, RATE, max_epochs=500)
+    test = [[0,1],[0,0],[0,0],[0,0]]
+    a = TensorTrain(HIDDEN).run_many(test)
+    a.sum().backward()
+    # TensorTrain(HIDDEN).train(data, RATE, max_epochs=500)
