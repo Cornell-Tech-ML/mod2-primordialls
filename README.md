@@ -20,6 +20,8 @@ The files that will be synced are:
 
 ## Simple Dataset (Hidden Layer 3, LR of 0.1)
 
+Time per epoch: 0.057 seconds
+
 ### Plot
 <img src="imgs/simpleplot.png" width="50%">
 
@@ -80,6 +82,8 @@ Epoch: 490/500, loss: 4.418378072326041, correct: 50\
 Epoch: 500/500, loss: 4.28173139512602, correct: 50
 
 ## Diag Dataset (Hidden Layer 7, LR of 0.1)
+
+Time per epoch: 0.166 seconds
 
 ### Plot
 <img src="imgs/diagplot.png" width="50%">
@@ -161,6 +165,8 @@ Epoch: 690/700, loss: 2.1650931250476275, correct: 50\
 Epoch: 700/700, loss: 2.1185960190184208, correct: 50
 
 ## Split Dataset (Hidden Layer 12, LR of 0.1)
+
+Time per epoch: 0.367 seconds
 
 ### Plot
 <img src="imgs/splitplot.png" width="50%">
@@ -272,6 +278,8 @@ Epoch: 990/1000, loss: 2.5507514185393956, correct: 50\
 Epoch: 1000/1000, loss: 2.5107908199495528, correct: 50
 
 ## Xor Dataset (Hidden Layer 16, LR of 0.1)
+
+Time per epoch: 0.554 seconds
 
 ### Plot
 <img src="imgs/xorplot.png" width="50%">
@@ -403,6 +411,8 @@ Epoch: 1190/1200, loss: 2.199514214688927, correct: 50\
 Epoch: 1200/1200, loss: 2.1693740890333935, correct: 50
 
 ## Circle Dataset (Hidden Layer 8, LR of 0.1)
+
+Time per epoch: 0.207 seconds
 
 ### Plot
 <img src="imgs/circleplot.png" width="50%">
