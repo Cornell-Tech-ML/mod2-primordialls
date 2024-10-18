@@ -59,7 +59,7 @@ class Function:
         # Create a new variable from the result with a new history.
         back = None
         if need_grad:
-            back = minitorch.History(cls, ctx, vals)
+            back = minitorch.History(cls, ctx, list(vals))
         return minitorch.Tensor(c._tensor, back, backend=c.backend)
 
 
