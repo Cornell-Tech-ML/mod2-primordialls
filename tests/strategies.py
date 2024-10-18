@@ -1,7 +1,5 @@
 from hypothesis import settings
 from hypothesis.strategies import floats, integers
-
-# can be deleted
 from minitorch.operators import is_close
 
 settings.register_profile("ci", deadline=None)
