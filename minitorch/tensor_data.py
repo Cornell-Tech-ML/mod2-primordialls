@@ -287,9 +287,9 @@ class TensorData:
                     l = "\n%s[" % ("\t" * i) + l
                 else:
                     break
-            s += l
+            s = f"{s}{l}"
             v = self.get(index)
-            s += f"{v:3.2f}"
+            s = f"{s}{v:3.2f}"
             l = ""
             for i in range(len(index) - 1, -1, -1):
                 if index[i] == self.shape[i] - 1:
@@ -297,7 +297,7 @@ class TensorData:
                 else:
                     break
             if l:
-                s += l
+                s = f"{s}{l}"
             else:
                 s += " "
         return s

@@ -417,7 +417,7 @@ def grad_central_difference(
     f: Any, *vals: Tensor, arg: int = 0, epsilon: float = 1e-6, ind: UserIndex
 ) -> float:
     """Compute the central difference for a function."""
-    x = vals[arg]
+    x = list(vals)[arg]
     up = zeros(x.shape)
     up[ind] = epsilon
     vals1 = [x if j != arg else x + up for j, x in enumerate(vals)]
