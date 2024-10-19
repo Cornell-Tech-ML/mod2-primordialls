@@ -240,13 +240,9 @@ class Permute(Function):
     def backward(ctx: Context, grad_output: Tensor) -> Tuple[Tensor, float]:
         """Permute backward"""
         (original,) = ctx.saved_values
-        invertorder = [
-            i
-            for i, _ in sorted(
-                list(enumerate([int(original[j]) for j in range(original.size)])),
-                key=lambda x: x[1],
-            )
-        ]
+        invertorder = [0] * original.size
+        for i in range(original.size):
+            invertorder[int(original[i])] = i
         return grad_output.permute(*invertorder), 0.0
 
 
