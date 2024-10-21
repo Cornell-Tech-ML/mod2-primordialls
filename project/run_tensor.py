@@ -11,7 +11,27 @@ def RParam(*shape):
     r = 2 * (minitorch.rand(shape) - 0.5)
     return minitorch.Parameter(r)
 
-# TODO: Implement for Task 2.5.
+class Network(minitorch.Module):
+    def __init__(self, hidden_layers):
+        super().__init__()
+        self.layer1 = Linear(2, hidden_layers)
+        self.layer2 = Linear(hidden_layers, hidden_layers)
+        self.layer3 = Linear(hidden_layers, 1)
+
+    def forward(self, x):
+        middle = self.layer1.forward(x).relu()
+        end = self.layer2.forward(middle).relu()
+        return self.layer3.forward(end).sigmoid()
+
+
+class Linear(minitorch.Module):
+    def __init__(self, in_size, out_size):
+        super().__init__()
+        self.weights = self.add_parameter("weights", RParam(in_size, out_size).value)
+        self.bias = self.add_parameter("bias", RParam(out_size).value)
+
+    def forward(self, inputs):
+        return (inputs.view(*inputs.shape,1) * self.weights.value).sum(1).view(inputs.shape[0],self.weights.value.shape[1]) + self.bias.value
 
 def default_log_fn(epoch, total_loss, correct, losses):
     print("Epoch ", epoch, " loss ", total_loss, "correct", correct)
@@ -64,7 +84,11 @@ class TensorTrain:
 
 if __name__ == "__main__":
     PTS = 50
-    HIDDEN = 2
+    HIDDEN = 3
     RATE = 0.5
     data = minitorch.datasets["Simple"](PTS)
-    TensorTrain(HIDDEN).train(data, RATE)
+    #test = [[1,2],[3,4],[5,6],[7,8]]
+    test = [[0,1],[0,0],[0,0],[0,0]]
+    a = TensorTrain(HIDDEN).run_many(test)
+    a.sum().backward()
+    # TensorTrain(HIDDEN).train(data, RATE, max_epochs=500)
